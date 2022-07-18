@@ -13,13 +13,13 @@ library(rgbif)
 library(CoordinateCleaner)
 library(rnaturalearth)
 library(sf)
-library(leaflet)
+library(mapview)
 library(ggspatial)
 library(patchwork)
 
 # # Alternative method to load many libraries
 # if(!require("pacman")) install.packages("pacman")
-# pacman::p_load(tidyverse, rgbif, CoordinateCleaner, rnaturalearth, sf, leaflet, ggspatial, patchwork)
+# pacman::p_load(tidyverse, rgbif, CoordinateCleaner, rnaturalearth, sf, mapview, ggspatial, patchwork)
 
 #### Download species data from GBIF ----
 
