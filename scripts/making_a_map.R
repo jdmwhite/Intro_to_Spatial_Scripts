@@ -60,6 +60,14 @@ ggplot() +
   scale_fill_viridis_c(trans = 'log', name = 'GDP (log)') +
   coord_sf(crs = 3035)
 
+# We can also change the projection of the coordinate reference system (CRS)
+world_rob <- st_transform(world, crs = '+proj=robin +lon_0=20 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs')
+
+ggplot() +
+  geom_sf(data = world_rob, aes(fill = gdp_md_est)) +
+  scale_fill_viridis_c(trans = 'log', name = 'GDP (log)') +
+  coord_sf(crs = 3035)
+
 # Let's move our focus back to our species map for Protea roupelliae
 # Create a vector of names for countries we want to use (= southern African countries) to filter to our area of focus
 countries <- c('South Africa', 'Lesotho', 'Swaziland', 'Namibia', 'Botswana', 'Zimbabwe', 'Mozambique')
