@@ -100,7 +100,7 @@ head(lc_changes)
 lc_changes %>% 
   rename(rcls_2020 = SANLC_2020_COJ_extent,
         rcls_1990 = SANLC_1990_COJ_extent) %>%
-  mutate(area = Freq*900/1e6,
+  mutate(area = Freq*400/1e6,
   lc1990 = case_when(
     rcls_1990 == 1 ~ 'Water',
     rcls_1990 == 2 ~ 'Agriculture',
@@ -112,6 +112,11 @@ lc_changes %>%
     rcls_2020 == 3 ~ 'Artificial',
     rcls_2020 == 4 ~ 'Vegetation')
 ) %>% select(lc1990, lc2020, area) -> lc_changes_labelled
+
+# Calculate the area of COJ
+paste(terra::expanse(coj)/1000000, 'km2')
+# Calculate the area of all changes
+paste(sum(lc_changes_labelled$area), 'km2')
 
 #### Visualisation ----
 # First let's run a sankey/alluvium plot
