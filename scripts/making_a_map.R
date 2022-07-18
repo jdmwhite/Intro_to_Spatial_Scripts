@@ -92,7 +92,7 @@ base_plot1 # print this object, we can now reuse 'base_plot1' and add to it late
 p_roup %>% select(key, year, basisOfRecord, decimalLongitude, decimalLatitude) %>% rename(lon = decimalLongitude, lat = decimalLatitude) -> pr_clean
 
 # Now we want to convert & project our data to the correct Coordinate Reference System
-pr_no_crs <- st_as_sf(pr_clean, coords = c('lon', 'lat'))
+pr_no_crs <- st_as_sf(pr_clean, coords = c('lon', 'lat'), remove = FALSE)
 st_crs(pr_no_crs) # as we converted these directly from GPS points, there is no set CRS
 
 # Let's try plot this
