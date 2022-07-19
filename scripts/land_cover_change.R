@@ -12,7 +12,7 @@ library(patchwork)
 library(mapview)
 
 #### Load data ----
-lc1990 <- rast("data/land_cover_change/SANLC_1990_COJ_extent.tif")
+lc1990 <- terra::rast("data/land_cover_change/SANLC_1990_COJ_extent.tif")
 lc2020 <- rast("data/land_cover_change/SANLC_2020_COJ_extent.tif")
 coj <- vect("data/land_cover_change/COJ_boundary.shp")
 
@@ -96,6 +96,7 @@ landcover_stack <- c(lc2020_rcl, lc1990_rcl)
 lc_changes <- crosstab(landcover_stack, long = TRUE)
 head(lc_changes)
 
+lc2020_rcl
 # tidy up this output by changing the raster names, calculating the area of each class and assigning the full names back to the numbers
 lc_changes %>% 
   rename(rcls_2020 = SANLC_2020_COJ_extent,
